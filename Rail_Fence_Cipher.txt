@@ -1,0 +1,57 @@
+import math
+import numpy as np
+
+inp = input('Enter your text: ').upper()
+        
+enc=[]
+dec1 = []
+temp1=[]
+temp2=[]
+
+def case1_Encrypt():
+    for i in range(len(inp)):
+        if i%2 is 0:
+            temp1.append(inp[i])
+        else:
+            temp2.append(inp[i])
+    enc = temp1 + temp2
+    print(enc)
+def case1_Decrypt():
+    inp_lst = list(inp)
+    size1 = len(inp_lst)/2
+    size1 = math.ceil(size1)
+    size2 = len(inp_lst) - size1
+    
+    for i in range(size1):
+        temp1.append(inp_lst.pop(0))
+    cond = True
+    while cond:
+        if temp1 == [] and inp_lst == []:
+            cond = False
+        else:
+            if temp1 != []:
+                dec1.append(temp1.pop(0))
+            if inp_lst != []:
+                dec1.append(inp_lst.pop(0))
+    print(dec1)
+
+def case1():
+    choice = int(input('If you want to Encrypt text press 1\nIf you want to Decrypt text press 2\n-> '))
+    if choice is 1:
+        case1_Encrypt()
+    elif choice is 2:
+        case1_Decrypt()
+    else:
+        print("Your choice doesn't make sense.")
+def case2():
+    pass
+
+
+depth = int(input('Input depth: '))
+if depth%2 is not 0:
+    print("PLease enter even digit for depth")
+else:
+    if depth is 2:
+        case1()
+    else:
+        case2()
